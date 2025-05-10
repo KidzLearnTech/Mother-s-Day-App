@@ -119,13 +119,6 @@
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
   100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
-.day.today {
-  background-color: #ffe6ea;
-}
-
-.day.past {
-  background-color: #ffffff;
-}
 </style>
 </head>
 <body>
@@ -192,7 +185,7 @@ const affirmations = [
 
     const devMode = true;
 const today = new Date();
-if (devMode) today.setDate(today.getDate() + 14);
+if (devMode) today.setDate(today.getDate() + 31);
     const startDate = new Date(2025, 4, 11); // May 11, 2025
 
     for (let i = 0; i < 30; i++) {
@@ -210,18 +203,17 @@ if (devMode) today.setDate(today.getDate() + 14);
       const isLocked = today < date;
       if (isLocked) {
         dayBox.classList.add('locked');
+        // no override for locked background (use CSS)
       } else {
         if (
           date.getFullYear() === today.getFullYear() &&
           date.getMonth() === today.getMonth() &&
           date.getDate() === today.getDate()
         ) {
-          dayBox.classList.add('today');
+          // no override for today background (use CSS)
         } else {
-          dayBox.classList.add('past');
+          // no override for past background (use CSS)
         }
-        
-      }
         dayBox.addEventListener('click', () => {
           calendar.style.animation = 'fadeOut 0.5s forwards';
           setTimeout(() => {
