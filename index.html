@@ -123,11 +123,6 @@
       z-index: 9999;
     }
 
-@keyframes fall {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-}
-</style>
     @keyframes fall {
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
@@ -139,57 +134,9 @@
   <div class="calendar" id="calendar"></div>
   <div id="affirmation"></div>
   <button id="backButton">Back to Calendar</button>
-
   <audio id="chime" src="magic-chime.mp3" preload="auto"></audio>
 
   <script>
-function createPetals(count = 10) {
-  for (let i = 0; i < count; i++) {
-    const petal = document.createElement('div');
-    petal.classList.add('petal');
-    petal.style.left = Math.random() * 100 + 'vw';
-    petal.style.top = '-40px';
-    const duration = (Math.random() * 2 + 3).toFixed(2);
-    const delay = (Math.random() * 1).toFixed(2);
-    petal.style.animation = `fall ${duration}s linear ${delay}s forwards`;
-    document.body.appendChild(petal);
-    const totalTime = (parseFloat(duration) + parseFloat(delay)) * 1000;
-    setTimeout(() => petal.remove(), totalTime);
-  }
-}
-
-const affirmations = [
-      "Hot Momma, You are the heart of our home. The moments you create make our kids feel safe and seen.",
-      "Even on the hardest days, your love is constant; and that’s what Esther and Robert will remember forever.",
-      "You’re doing an amazing job Hot Momma. Just by showing up and being present, you’re giving them the keys to the world.",
-      "Your patience is a quiet superpower. It doesn’t always feel heroic, but it is.",
-      "We’re raising humans who feel loved, valued, and confident; and it’s because of you.",
-      "The way you nurture, guide, and protect or kiddos is a daily act of grace.",
-      "You are allowed to feel tired (especially while you’re doing this on your own). It doesn’t make you any less extraordinary.",
-      "You turn everyday routines into rituals of comfort. That’s magic.",
-      "Your smiles and laughter is a melody Robert and Esther will carry with them their whole lives.",
-      "You’re not just doing enough Hot Momma. You are doing beautifully!",
-      "In their eyes, you are strength, softness, and home all wrapped in one person.",
-      "When you doubt yourself, I want you to remember that Esther and Robert don’t. They believe in you completely.",
-      "You hold so many things together, often without recognition. Today, I want you to know I see you.",
-      "The example you set matters more than any rule you make, and you’re setting a beautiful one.",
-      "Motherhood isn't about perfection. It's about showing up. And you do, with so much heart.",
-      "You’re helping Esther and Robert grow roots and wings — what a gift.",
-      "The way you listen to them teaches them that their voice matters.",
-      "Every hug and every kiss adds up to a lifetime of security.",
-      "You are creating a childhood they’ll look back on with love.",
-      "They don’t need a perfect mom, but they got one anyway.",
-      "You’ve turned our house into a sanctuary. Not because of stuff, but because of your spirit.",
-      "The love you give has no limits. It shapes everything.",
-      "Even on the days you don’t feel strong, you are. I see it, and Esther and Robert feel it.",
-      "You are not alone in this Hot Momma. You’re deeply supported and admired.",
-      "You make ordinary days unforgettable just by being in them.",
-      "I know it’s not always easy, but you’re making it meaningful.",
-      "When I think of our kids growing up, I’m so grateful they get to grow up with you.",
-      "The way you love our children is the most beautiful thing I’ve ever witnessed.",
-      "Your motherhood is art. It’s brave, generous, and wildly beautiful.",
-      "Thank you for being you. You are, truly, the best thing in our lives. Esther, Robert and I are truly lucky!"
-    ];
     function createPetals(count = 10) {
       for (let i = 0; i < count; i++) {
         const petal = document.createElement('div');
@@ -205,15 +152,44 @@ const affirmations = [
       }
     }
 
-    const affirmations = [...Array(30)].map((_, i) => `Affirmation ${i + 1}`); // replace with real affirmations if needed
+    const affirmations = [
+  "Hot Momma, You are the heart of our home. The moments you create make our kids feel safe and seen.",
+  "Even on the hardest days, your love is constant; and that’s what Esther and Robert will remember forever.",
+  "You’re doing an amazing job Hot Momma. Just by showing up and being present, you’re giving them the keys to the world.",
+  "Your patience is a quiet superpower. It doesn’t always feel heroic, but it is.",
+  "We’re raising humans who feel loved, valued, and confident; and it’s because of you.",
+  "The way you nurture, guide, and protect or kiddos is a daily act of grace.",
+  "You are allowed to feel tired (especially while you’re doing this on your own). It doesn’t make you any less extraordinary.",
+  "You turn everyday routines into rituals of comfort. That’s magic.",
+  "Your smiles and laughter is a melody Robert and Esther will carry with them their whole lives.",
+  "You’re not just doing enough Hot Momma. You are doing beautifully!",
+  "In their eyes, you are strength, softness, and home all wrapped in one person.",
+  "When you doubt yourself, I want you to remember that Esther and Robert don’t. They believe in you completely.",
+  "You hold so many things together, often without recognition. Today, I want you to know I see you.",
+  "The example you set matters more than any rule you make, and you’re setting a beautiful one.",
+  "Motherhood isn't about perfection. It's about showing up. And you do, with so much heart.",
+  "You’re helping Esther and Robert grow roots and wings — what a gift.",
+  "The way you listen to them teaches them that their voice matters.",
+  "Every hug and every kiss adds up to a lifetime of security.",
+  "You are creating a childhood they’ll look back on with love.",
+  "They don’t need a perfect mom, but they got one anyway.",
+  "You’ve turned our house into a sanctuary. Not because of stuff, but because of your spirit.",
+  "The love you give has no limits. It shapes everything.",
+  "Even on the days you don’t feel strong, you are. I see it, and Esther and Robert feel it.",
+  "You are not alone in this Hot Momma. You’re deeply supported and admired.",
+  "You make ordinary days unforgettable just by being in them.",
+  "I know it’s not always easy, but you’re making it meaningful.",
+  "When I think of our kids growing up, I’m so grateful they get to grow up with you.",
+  "The way you love our children is the most beautiful thing I’ve ever witnessed.",
+  "Your motherhood is art. It’s brave, generous, and wildly beautiful.",
+  "Thank you for being you. You are, truly, the best thing in our lives. Esther, Robert and I are truly lucky!"
+];
     const calendar = document.getElementById('calendar');
     const affirmationBox = document.getElementById('affirmation');
     const chime = document.getElementById('chime');
     const backButton = document.getElementById('backButton');
 
     const devMode = true;
-const today = new Date();
-if (devMode) today.setDate(today.getDate() + 31);
     const today = new Date();
     if (devMode) today.setDate(today.getDate() + 14);
 
@@ -226,7 +202,6 @@ if (devMode) today.setDate(today.getDate() + 31);
       const dayBox = document.createElement('div');
       dayBox.classList.add('day');
 
-      const options = { weekday: 'short', month: 'short', day: 'numeric' };
       const dayOfWeek = date.toLocaleDateString(undefined, { weekday: 'long' });
       const monthDay = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
       dayBox.innerHTML = `<div>${dayOfWeek}</div><div>${monthDay}</div>`;
@@ -234,32 +209,16 @@ if (devMode) today.setDate(today.getDate() + 31);
       const isLocked = today < date;
       if (isLocked) {
         dayBox.classList.add('locked');
-        // no override for locked background (use CSS)
       } else {
         if (
           date.getFullYear() === today.getFullYear() &&
           date.getMonth() === today.getMonth() &&
           date.getDate() === today.getDate()
         ) {
-          // no override for today background (use CSS)
           dayBox.classList.add('today');
         } else {
-          // no override for past background (use CSS)
           dayBox.classList.add('past');
         }
-        dayBox.addEventListener('click', () => {
-          calendar.style.animation = 'fadeOut 0.5s forwards';
-          setTimeout(() => {
-            calendar.style.display = 'none';
-            affirmationBox.textContent = affirmations[i];
-            affirmationBox.style.display = 'block';
-            affirmationBox.style.opacity = '1';
-            backButton.style.display = 'inline-block';
-            chime.currentTime = 0;
-            chime.play();
-            createPetals(15);
-          }, 500);
-        });
       }
 
       dayBox.addEventListener('click', () => {
@@ -288,7 +247,6 @@ if (devMode) today.setDate(today.getDate() + 31);
         backButton.style.display = 'none';
         calendar.style.display = 'grid';
         calendar.style.animation = 'fadeIn 0.5s forwards';
-      createPetals();
         createPetals();
       }, 500);
     });
