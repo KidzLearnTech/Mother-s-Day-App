@@ -220,15 +220,20 @@ if (devMode) today.setDate(today.getDate() + 14);
         } else {
           dayBox.classList.add('past');
         }
-        if (
-          date.getFullYear() === today.getFullYear() &&
-          date.getMonth() === today.getMonth() &&
-          date.getDate() === today.getDate()
-        ) {
-          // no override for today background (use CSS)
-        } else {
-          // no override for past background (use CSS)
-        }
+        dayBox.addEventListener('click', () => {
+          calendar.style.animation = 'fadeOut 0.5s forwards';
+          setTimeout(() => {
+            calendar.style.display = 'none';
+            affirmationBox.textContent = affirmations[i];
+            affirmationBox.style.display = 'block';
+            affirmationBox.style.opacity = '1';
+            backButton.style.display = 'inline-block';
+            chime.currentTime = 0;
+            chime.play();
+            createPetals(15);
+          }, 500);
+        });
+      }
         dayBox.addEventListener('click', () => {
           calendar.style.animation = 'fadeOut 0.5s forwards';
           setTimeout(() => {
