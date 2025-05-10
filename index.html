@@ -119,6 +119,13 @@
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
   100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
+.day.today {
+  background-color: #ffe6ea;
+}
+
+.day.past {
+  background-color: #ffffff;
+}
 </style>
 </head>
 <body>
@@ -203,8 +210,16 @@ if (devMode) today.setDate(today.getDate() + 14);
       const isLocked = today < date;
       if (isLocked) {
         dayBox.classList.add('locked');
-        // no override for locked background (use CSS)
       } else {
+        if (
+          date.getFullYear() === today.getFullYear() &&
+          date.getMonth() === today.getMonth() &&
+          date.getDate() === today.getDate()
+        ) {
+          dayBox.classList.add('today');
+        } else {
+          dayBox.classList.add('past');
+        }
         if (
           date.getFullYear() === today.getFullYear() &&
           date.getMonth() === today.getMonth() &&
