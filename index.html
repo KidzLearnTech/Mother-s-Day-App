@@ -2,40 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=700, initial-scale=1.0" />
   <title>Hot Momma Affirmations</title>
   <link rel="manifest" href="manifest.json" />
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat, #fffaf5;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      overflow-x: hidden;
-    }
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat, #fffaf5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  overflow-x: auto;
+}
 
     .calendar {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 10px;
-      width: 100%;
-      max-width: 700px;
-      margin-top: 1rem;
-      padding: 0 0.5rem;
-      box-sizing: border-box;
-    }
-
-    .day.locked {
-      background-color: #f1f1f1;
-      color: #bbb;
-      background-image: none;
-      cursor: default;
-      box-shadow: none;
-    }
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 1rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
 
     .day.today {
       background-color: #ffe6ea;
