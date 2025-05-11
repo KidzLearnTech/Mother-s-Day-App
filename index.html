@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Hot Momma Affirmations</title>
   <link rel="manifest" href="manifest.json" />
   <style>
@@ -15,12 +15,7 @@
       flex-direction: column;
       align-items: center;
       padding: 1rem;
-    }
-
-    h1 {
-      margin-bottom: 1rem;
-      color: #a0522d;
-      font-family: 'Georgia', serif;
+      overflow-x: hidden;
     }
 
     .calendar {
@@ -30,19 +25,8 @@
       width: 100%;
       max-width: 700px;
       margin-top: 1rem;
-    }
-
-    .day {
-      background: #fffdf6 url('https://cdn.pixabay.com/photo/2016/03/23/18/34/flower-1274365_960_720.png') no-repeat center top 10px;
-      background-size: 40px 40px;
-      border: 2px dashed #deb887;
-      border-radius: 10px;
-      padding: 2rem 0.5rem 0.5rem;
-      text-align: center;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-      font-size: 0.9rem;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+      padding: 0 0.5rem;
+      box-sizing: border-box;
     }
 
     .day.locked {
@@ -127,7 +111,21 @@
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
-  </style>
+  .day {
+      background: #fffdf6 url('https://cdn.pixabay.com/photo/2016/03/23/18/34/flower-1274365_960_720.png') no-repeat center top 10px;
+      background-size: 40px 40px;
+      border: 2px dashed #deb887;
+      border-radius: 10px;
+      padding: 2rem 0.5rem 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      font-size: 0.9rem;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+</style>
 </head>
 <body>
   <h1>Hot Momma's Daily Affirmation</h1>
